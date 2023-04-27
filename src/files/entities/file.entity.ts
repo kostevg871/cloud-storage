@@ -1,7 +1,9 @@
+import { UserEntity } from 'src/users/entities/user.entity';
 import {
   Column,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -21,6 +23,9 @@ export class FileEntity {
 
   @Column()
   mimetype: string;
+
+  @ManyToOne(() => UserEntity, (user) => user.files)
+  user: UserEntity;
 
   @DeleteDateColumn()
   detecteAt?: Date;
