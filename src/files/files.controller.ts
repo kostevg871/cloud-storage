@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   MaxFileSizeValidator,
   ParseFilePipe,
   Post,
@@ -12,13 +13,16 @@ import { FilesService } from './files.service';
 import { ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express/multer/interceptors/file.interceptor';
 import { fileStorage } from './storage';
-import { CreateFileDto } from './dto/create-file.dto';
 
 @Controller('files')
 @ApiTags('files')
 export class FilesController {
   constructor(private readonly filesService: FilesService) {}
 
+  @Get()
+  findAll() {
+    return this.filesService.findAll();
+  }
   @Post()
   @UseInterceptors(FileInterceptor('file', { storage: fileStorage }))
   @ApiConsumes('multipart/form-data')
