@@ -13,9 +13,12 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Облачное хранилище')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup('swagger', app, document, {
+    swaggerOptions: { persistAuthtorization: true },
+  });
 
   await app.listen(7777);
 }

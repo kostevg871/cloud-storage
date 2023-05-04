@@ -9,6 +9,7 @@ import {
 
 @Entity('files')
 export class FileEntity {
+  [x: string]: any;
   @PrimaryGeneratedColumn()
   id: number;
 
