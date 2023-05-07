@@ -20,7 +20,7 @@ export class FileEntity {
   originName: string;
 
   @Column()
-  size: string;
+  size: number;
 
   @Column()
   mimetype: string;
