@@ -1,5 +1,6 @@
 import {
   Controller,
+  Delete,
   Get,
   MaxFileSizeValidator,
   ParseFilePipe,
@@ -54,5 +55,10 @@ export class FilesController {
     @UserId() userId: number,
   ) {
     return this.filesService.create(file, userId);
+  }
+
+  @Delete()
+  remove(@UserId() userId: number, @Query('ids') ids: string) {
+    return this.filesService.remove(userId, ids);
   }
 }
