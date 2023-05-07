@@ -7,14 +7,18 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+export enum FileType {
+  PHOTOS = 'photos',
+  TRASH = 'trash',
+}
+
 @Entity('files')
 export class FileEntity {
-  [x: string]: any;
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  fileName: string;
+  filename: string;
 
   @Column()
   originName: string;
