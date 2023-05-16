@@ -18,7 +18,7 @@ export class FilesService {
       qb.andWhere('file.mimetype ILIKE :type', { type: '%image%' });
     }
     if (fileType === FileType.TRASH) {
-      qb.withDeleted().andWhere('file.deletedAt IS NOT NULL');
+      qb.withDeleted().andWhere('file.detecteAt IS NOT NULL');
     }
     return qb.getMany();
   }
